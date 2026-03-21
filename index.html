@@ -160,6 +160,12 @@
         0% { transform: scale(1); opacity: 1;}
         100% {transform: scale(0); opacity: 0; }
     }
+    @media (max-width:768px){
+        nav{
+            flex-direction: column;
+            padding: 10px;
+        }
+    }
     
     </style>
 </head>
@@ -200,21 +206,23 @@
 
     <script>
         function mostrar(id, elemento){
-            document.querySelectorAll('.seccion').forEach(s=>s.style.display='none');
-            document.getElementById(id).style.display='block';
+    document.querySelectorAll('.seccion').forEach(s=>s.style.display='none');
+    document.getElementById(id).style.display='block';
 
-            document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-            elemento.classList.add('active');
-        }
-        document.addEventListener('mousemove', (e)=>{
-            const particula=document.createElement('div');
-            particula.classList.add('particula');
-            particula.style.left=e.clientX + 'px';
-            particula.style.top=e.clientY + 'px';
-            document.body.appendChild(particula);
+    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
+    elemento.classList.add('active');
+}
 
-            setTimeout(()=>particula.remove(),600);
-        })
+if (window.innerWidth > 768) {
+    document.addEventListener('mousemove', (e) => {
+        const particula = document.createElement('div');
+        particula.classList.add('particula');
+        particula.style.left = e.clientX + 'px';
+        particula.style.top = e.clientY + 'px';
+        document.body.appendChild(particula);
+        setTimeout(() => particula.remove(), 600);
+    });
+}
     </script>
 </body>
 </html>
