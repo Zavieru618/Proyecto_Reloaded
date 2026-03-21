@@ -160,12 +160,54 @@
         0% { transform: scale(1); opacity: 1;}
         100% {transform: scale(0); opacity: 0; }
     }
-    @media (max-width:768px){
-        nav{
-            flex-direction: column;
-            padding: 10px;
-        }
+    @media (max-width: 768px) { 
+    nav {
+        flex-direction: column;
+        padding: 10px;
     }
+
+    .links {
+        position: static;
+        transform: none;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 70px;
+    }
+
+    .img-mundo {
+        position: static;
+        transform: none;
+        width: 180px;
+        margin: 0 auto;
+    }
+
+    .tarjeta-contenido {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .texto {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .tarjeta {
+        padding: 20px;
+        width: 90%;
+    }
+
+    .nube-izq, .nube-der {
+        display: none;
+    }
+}
     
     </style>
 </head>
