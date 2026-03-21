@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR 404</title>
+
+    <style>
+        body{
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: monospace;
+            color:red;
+        }
+        .container{
+            border: 2px solid red;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            animation: parpadeo 1s infinite;
+        }
+        @keyframes parpadeo{
+            0% {border-color: red;}
+            50% {border-color: darkred;}
+            100% {border-color: red;}
+        }
+        h1{color: red; font-size: 40px;}
+        p{color: #ff4444;}
+        .ip{color: #ff0000;font-weight: bold;}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ACCOUNT BANNED</h1>
+        <p>Your account and IP address have been permanently banned from PvZ2 Reloaded.</p>
+        <p class="ip">IP detectada: <span id="ip">Obteniendo...</span></p>
+        <p>Reason: <strong style="color:red">Unauthorized modification of game files</strong></p>
+        <p>If you believe this is an error, contact support.<br>
+        <strong style="color:red">Case ID: #00██-BANNED</strong></p>
+    </div>
+
+    <script>
+        fetch('https://api.ipify.org?format=json')
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById('ip').textContent = data.ip;
+        });
+    </script>
+
+</body>
+</html>
