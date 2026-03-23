@@ -218,6 +218,11 @@
     .nube-izq, .nube-der {
         display: none;
     }
+    .particula{
+        width: 20px;
+        height: 20px;
+        animation: desvanecer 1s ease forwards;
+    }
 }
     
     </style>
@@ -283,15 +288,15 @@ if (window.innerWidth > 768) {
     });
 }
 if (window.innerWidth <= 768) {
-    document.addEventListener('touchmove', (e) => {
+    document.addEventListener('touchstart', (e) => {
         const toque = e.touches[0];
         const particula = document.createElement('div');
         particula.classList.add('particula');
         particula.style.left = toque.clientX + 'px';
         particula.style.top = toque.clientY + 'px';
         document.body.appendChild(particula);
-        setTimeout(() => particula.remove(), 600);
-    }, { passive: true });
+        setTimeout(() => particula.remove(), 1200);
+    });
 }
     </script>
 </body>
