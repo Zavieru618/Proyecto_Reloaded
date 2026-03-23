@@ -170,11 +170,17 @@
         flex-direction: column;
         padding: 10px;
     }
-
+    ol{
+        padding-left: 20px;
+        text-align: left;
+    }
+    li{
+        margin-bottom: 10px;
+    }
     .links {
         position: static;
         transform: none;
-        gap: 15px;
+        gap: 55px;
         justify-content: center;
     }
 
@@ -190,7 +196,7 @@
     .img-mundo {
         position: static;
         transform: none;
-        width: 180px;
+        width: 270px;
         margin: 0 auto;
     }
 
@@ -285,7 +291,7 @@ if (window.innerWidth <= 768) {
         particula.style.top = toque.clientY + 'px';
         document.body.appendChild(particula);
         setTimeout(() => particula.remove(), 600);
-    });
+    }, { passive: true });
 }
     </script>
 </body>
