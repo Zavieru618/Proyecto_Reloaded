@@ -61,12 +61,17 @@
         text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
+    ol, li{
+        color: white;
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
     .particula{
         position: fixed;
         width: 15px;
         height: 15px;
         border-radius: 50%;
-        background: white;
+        background: radial-gradient(circle, #5f09e8, #a07800);
         pointer-events: none;
         animation: desvanecer 0.6s ease forwards;
     }
@@ -227,10 +232,16 @@
             <div class="tarjeta-contenido">
                 <img src="img/logo1.png" alt="mundo" class="img-mundo">
                     <div class="texto">
-            <h1>Inicio</h1>
-            <p>Testeando...<br>
-            Testeando...<br>
-            Testeando...</p>
+            <h1>¡Bienvenido a Zomburbia, viajero!</h1>
+            <p>Plants vs Zombies 2 Reloaded te da la bienvenida a Zomburbia, el mundo ideal para comenzar con tu nueva aventura :D<br>
+            aquí encontrarás una dificultad diseñada para todo tipo de jugador, desde los más nuevos como los más experimentados.<br>
+            <br>¿Como instalar Reloaded?</p>
+            <ol>
+                <li>Para descargar el mod ve en el apartado de "Descarga"</li>
+                <li>Baja el apk y archivo OBB que se encuentran en la carpeta</li>
+                <li>Instala el apk en tu dispositivo. Si hay error o te expulsa te recomiendo instalar "XAPK Installer" e instalar desde ahí</li>
+                <li>Pegas el archivo OBB en su carpeta "#"</li>
+            </ol>
                 </div>
             </div>
         </div>
@@ -261,6 +272,17 @@ if (window.innerWidth > 768) {
         particula.classList.add('particula');
         particula.style.left = e.clientX + 'px';
         particula.style.top = e.clientY + 'px';
+        document.body.appendChild(particula);
+        setTimeout(() => particula.remove(), 600);
+    });
+}
+if (window.innerWidth <= 768) {
+    document.addEventListener('touchmove', (e) => {
+        const toque = e.touches[0];
+        const particula = document.createElement('div');
+        particula.classList.add('particula');
+        particula.style.left = toque.clientX + 'px';
+        particula.style.top = toque.clientY + 'px';
         document.body.appendChild(particula);
         setTimeout(() => particula.remove(), 600);
     });
