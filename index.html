@@ -223,7 +223,9 @@
     .particula{
         width: 20px;
         height: 20px;
-        animation: desvanecer 1s ease forwards;
+        animation: desvanecer 2s ease forwards;
+        box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
+        z-index: 9999;
     }
 }
     </style>
@@ -342,6 +344,9 @@ if (window.innerWidth <= 768) {
                   for (let i = 0; i < particulasFaltantes; i++) {
                     const puntoX = ultimoToqueX + (dx * (i / particulasFaltantes));
                     const puntoY = ultimoToqueY + (dy * (i / particulasFaltantes));
+
+                    puntoX+=(Math.random()-0.5)*16;
+                    puntoY+=(Math.random()-0.5)*16;
                     crearParticula(puntoX, puntoY, true);
                     }
             } else {
