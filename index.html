@@ -73,7 +73,9 @@
         border-radius: 50%;
         background: radial-gradient(circle, #5f09e8, #a07800);
         pointer-events: none;
-        animation: desvanecer 0.6s ease forwards;
+        animation: desvanecer 0.8s ease forwards;
+        box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
+        z-index: 9999;
     }
     .tarjeta{
         background: rgba(255, 255, 255, 0.04);
@@ -224,7 +226,6 @@
         animation: desvanecer 1s ease forwards;
     }
 }
-    
     </style>
 </head>
 <body>
@@ -232,8 +233,8 @@
     <nav>
         <img src="./img/rdl.png" alt="logo" class="logo">
         <div class="links">
-            <a href="#" class="active" onclick="mostrar('Inicio')">Inicio</a>
-            <a href="#" onclick="mostrar('Novedades')">Novedades</a>
+            <a href="#" class="active" onclick="mostrar('Inicio', this)">Inicio</a>
+            <a href="#" onclick="mostrar('Novedades', this)">Novedades</a>
             <a href="./html_alter/ban.html">Descarga</a>
         </div>
     </nav>
@@ -261,7 +262,8 @@
     <div id="Novedades" class="seccion" style="display: none">
         <div class="tarjeta">
         <h1>Novedades</h1>
-        <p>Testeando...</p>
+        <p>Sin novedades por el momento<br>
+        Por favor espere.</p>
         </div>
     </div>
 
@@ -269,35 +271,73 @@
     <div class="nube nube-der"></div>
 
     <script>
-        function mostrar(id, elemento){
-    document.querySelectorAll('.seccion').forEach(s=>s.style.display='none');
-    document.getElementById(id).style.display='block';
+    function mostrar(id, elemento) {
+            document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
 
-    document.querySelectorAll('nav a').forEach(a=>a.classList.remove('active'));
-    elemento.classList.add('active');
+            document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+            if (elemento) {
+                elemento.classList.add('active');
+    }   
 }
-
-if (window.innerWidth > 768) {
-    document.addEventListener('mousemove', (e) => {
+    function crearParticula(x, y, esMovil){
         const particula = document.createElement('div');
         particula.classList.add('particula');
-        particula.style.left = e.clientX + 'px';
-        particula.style.top = e.clientY + 'px';
+
+        const baseSize = esMovil ? 18 : 12;
+        const sizeVariation = Math.random()*8;
+        const finalSize = baseSize + sizeVariation;
+
+        const driftRange = esMovil?30:50;
+        const driftX=(Math.random() - 0.5) * driftRange;
+        const driftY=((Math.random()* -driftRange) - 10);
+
+        const duracion =esMovil?0.8:1.5;
+
+        particula.style.setProperty('--size', `${finalSize}px`);
+        particula.style.setProperty('--driftX', `${driftX}px`);
+        particula.style.setProperty('--driftY', `${driftY}px`);
+        particula.style.setProperty('--duracion', `${duracion}s`);
+
+        particula.style.left = (x - finalSize / 2) + 'px';
+        particula.style.top = (y - finalSize / 2) + 'px';
+
         document.body.appendChild(particula);
-        setTimeout(() => particula.remove(), 600);
+
+        setTimeout(() =>{
+            particula.remove();
+        }, duracion * 1000);
+    }
+if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+        crearParticula(e.clientX, e.clientY, false);
+
     });
 }
 if (window.innerWidth <= 768) {
-    document.addEventListener('touchstart', (e) => {
-        const toque = e.touches[0];
-        const particula = document.createElement('div');
-        particula.classList.add('particula');
-        particula.style.left = toque.clientX + 'px';
-        particula.style.top = toque.clientY + 'px';
-        document.body.appendChild(particula);
-        setTimeout(() => particula.remove(), 1200);
-    });
-}
+        let ultimoToqueX = 0;
+        let ultimoToqueY = 0;
+        const distanciaMinima = 15;
+
+        document.addEventListener('touchmove', (e) => {
+            const toque = e.touches[0];
+            const xActual = toque.clientX;
+                
+            const yActual = toque.clientY;
+            const distancia = Math.sqrt(Math.pow(xActual - ultimoToqueX, 2) + Math.pow(yActual - ultimoToqueY, 2));
+        if (distancia > distanciaMinima) {
+                crearParticula(xActual, yActual, true);
+                ultimoToqueX = xActual;
+                ultimoToqueY = yActual;
+        }
+            }, { passive: true }); 
+            document.addEventListener('touchstart', (e) => {
+                const toque = e.touches[0];
+                crearParticula(toque.clientX, toque.clientY, true);
+                ultimoToqueX = toque.clientX;
+                ultimoToqueY = toque.clientY;
+            });
+        }
     </script>
 </body>
 </html>
