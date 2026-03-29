@@ -223,7 +223,7 @@
     .particula{
         width: 20px;
         height: 20px;
-        animation: desvanecer 2s ease forwards;
+        animation: desvanecer 1s ease forwards;
         box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
         z-index: 9999;
     }
@@ -280,21 +280,22 @@
             document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
             if (elemento) {
                 elemento.classList.add('active');
-    }   
-}
+            }   
+    }
+    
     function crearParticula(x, y, esMovil){
         const particula = document.createElement('div');
         particula.classList.add('particula');
 
         const baseSize = esMovil ? 18 : 12;
-        const sizeVariation = Math.random()*8;
+        const sizeVariation = Math.random() * 8;
         const finalSize = baseSize + sizeVariation;
 
-        const driftRange = esMovil?30:50;
-        const driftX=(Math.random() - 0.5) * driftRange;
-        const driftY=((Math.random()* -driftRange) - 10);
+        const driftRange = esMovil ? 30 : 50;
+        const driftX = (Math.random() - 0.5) * driftRange;
+        const driftY = ((Math.random() * -driftRange) - 10);
 
-        const duracion =esMovil?0.8:1.5;
+        const duracion = esMovil ? 0.8 : 1.5;
 
         particula.style.setProperty('--size', `${finalSize}px`);
         particula.style.setProperty('--driftX', `${driftX}px`);
@@ -310,13 +311,14 @@
             particula.remove();
         }, duracion * 1000);
     }
-if (window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-        crearParticula(e.clientX, e.clientY, false);
 
-    });
-}
-if (window.innerWidth <= 768) {
+    if (window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            crearParticula(e.clientX, e.clientY, false);
+        });
+    }
+
+    if (window.innerWidth <= 768) {
         let ultimoToqueX = 0;
         let ultimoToqueY = 0;
         let tocando = false;
@@ -328,6 +330,7 @@ if (window.innerWidth <= 768) {
             tocando = true;
             crearParticula(ultimoToqueX, ultimoToqueY, true);
         });
+        
         document.addEventListener('touchmove', (e) => {
             if (!tocando) return;
                 
@@ -342,23 +345,26 @@ if (window.innerWidth <= 768) {
             if (distancia > 4) {
                 const particulasFaltantes = Math.floor(distancia / 4);
                   for (let i = 0; i < particulasFaltantes; i++) {
-                    const puntoX = ultimoToqueX + (dx * (i / particulasFaltantes));
-                    const puntoY = ultimoToqueY + (dy * (i / particulasFaltantes));
+                    let puntoX = ultimoToqueX + (dx * (i / particulasFaltantes));
+                    let puntoY = ultimoToqueY + (dy * (i / particulasFaltantes));
 
-                    puntoX+=(Math.random()-0.5)*16;
-                    puntoY+=(Math.random()-0.5)*16;
+                    puntoX += (Math.random() - 0.5) * 16;
+                    puntoY += (Math.random() - 0.5) * 16;
+                    
                     crearParticula(puntoX, puntoY, true);
-                    }
+                  }
             } else {
                 crearParticula(xActual, yActual, true);
-                }
-                ultimoToqueX = xActual;
-                ultimoToqueY = yActual;
-            }, { passive: true });
-            document.addEventListener('touchend', () => {
+            }
+            
+            ultimoToqueX = xActual;
+            ultimoToqueY = yActual;
+        }, { passive: true });
+        
+        document.addEventListener('touchend', () => {
             tocando = false;
-            });
-        }
+        });
+    }
     </script>
 </body>
 </html>
