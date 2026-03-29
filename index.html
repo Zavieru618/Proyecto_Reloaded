@@ -15,7 +15,7 @@
         radial-gradient(ellipse at 20% 30%, rgba(123, 47, 247, 0.3) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 70%, rgba(74, 0, 128, 0.4) 0%, transparent 50%);
     background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
-    min-height: 10vh;
+    min-height: 100vh;
     margin: 0;
     font-family: 'Mifuente',sans-serif;
     overflow-x: hidden;
@@ -92,11 +92,12 @@
     }
     .img-mundo{
         position: absolute;
-        left: -80px; 
+        left: -80px;
         top: 50%;
         transform: translateY(-50%);
         width: 250px;
         height: auto;
+        animation: flotarMundo 3s ease-in-out infinite;
     }
     .quetzal-wrapper {
     position: absolute;
@@ -147,6 +148,11 @@
         bottom: -40px;
         width: 100%;
     }
+    @keyframes flotarMundo {
+        0%   { transform: translateY(-50%) translateX(0); }
+        50%  { transform: translateY(calc(-50% - 15px)) translateX(0); }
+        100% { transform: translateY(-50%) translateX(0); }
+    }
     @keyframes quetzalVolar{
         0%   { transform: translateY(0px) rotate(-3deg); }
         25%  { transform: translateY(-10px) rotate(0deg); }
@@ -169,6 +175,11 @@
     @keyframes flotarNube {
         0% { transform: translate(-10%, 0); }
         100% { transform: translate(10%, 0); }
+    }
+    @keyframes flotarMundoMovil{
+        0%   { transform: translateY(0px); }
+        50%  { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
     }
    .nube-1 {
         width: 450px;
@@ -247,9 +258,9 @@
     }
     .quetzal-wrapper {
         position: absolute;
-        width: 90px;
-        top: -70px;
-        right: 20px;
+        width: 170px;
+        top: -26px;
+        right: -70px;
     }
     .links {
         position: static;
@@ -257,38 +268,34 @@
         gap: 55px;
         justify-content: center;
     }
-
     nav a {
         font-size: 18px;
     }
-
     .logo {
         width: 100px;
         height: 70px;
     }
-
     .img-mundo {
         position: static;
         transform: none;
-        width: 270px;
-        margin: 0 auto;
+        width: 380px;
+        margin: 30px;
+        display: block;
+        animation: flotarMundoMovil 3s ease-in-out infinite;
     }
-
     .tarjeta-contenido {
         flex-direction: column;
         align-items: center;
     }
-
     .texto {
         margin-left: 0;
         text-align: center;
     }
-
     .tarjeta {
         padding: 20px;
         width: 90%;
+        margin-top: 50px;    
     }
-
     .nube-izq, .nube-der {
         display: none;
     }
@@ -299,7 +306,7 @@
         box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
         z-index: 9999;
     }
-}
+    }
     </style>
 </head>
 <body>
