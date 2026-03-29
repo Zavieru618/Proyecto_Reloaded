@@ -116,13 +116,19 @@
     </div>
 
     <script>
-        fetch('https://api.ipify.org?format=json')
-        .then(r => r.json())
-        .then(data => {
-            document.getElementById('ip').textContent = data.ip;
-        }).catch(e => {
-            document.getElementById('ip').textContent = 'ERROR';
-        });
+        function rastrearIPFalsa(){
+            const octeto1=Math.floor(Math.random()*240)+11;
+            const octeto2 = Math.floor(Math.random()*255);
+            const ipCensurada = `${octeto1}.${octeto2}.███.███`;
+
+            setTimeout(() => {
+                const spanIP = document.getElementById('ip');
+                spanIP.textContent = ipCensurada;
+                spanIP.style.textShadow = "0 0 10px red";
+                spanIP.style.color = "#ff4444";
+            }, 800);
+            rastrearIPFalsa();
+        }
         const terminal = document.getElementById('terminal');
         const cajaBan = document.getElementById('cajaBan');
         const dynamicID = document.getElementById('dynamicID');
@@ -134,7 +140,13 @@
             "> Extrayendo identificador de dispositivo...",
             "> Localizando nodo de IP...",
             "> ALERTA CRÍTICA: Intento de vulneración detectado.",
-            "> Ejecutando protocolo de bloqueo de emergencia 0x88A..."
+            "> Ejecutando protocolo de bloqueo de emergencia 0x88A...",
+            "> TE VEOOO...",
+            "> TE VEOOO...",
+            "> TE VEOOO...",
+            "> TE TENGO..."
+
+
         ];
         let lineaActual = 0;
         let caseIDInterval;
