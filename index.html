@@ -317,25 +317,41 @@ if (window.innerWidth > 768) {
 if (window.innerWidth <= 768) {
         let ultimoToqueX = 0;
         let ultimoToqueY = 0;
-        const distanciaMinima = 15;
+        let tocando = false;
 
+        document.addEventListener('touchstart', (e) => {
+            const toque = e.touches[0];
+            ultimoToqueX = toque.clientX;
+            ultimoToqueY = toque.clientY;
+            tocando = true;
+            crearParticula(ultimoToqueX, ultimoToqueY, true);
+        });
         document.addEventListener('touchmove', (e) => {
+            if (!tocando) return;
+                
             const toque = e.touches[0];
             const xActual = toque.clientX;
-                
             const yActual = toque.clientY;
-            const distancia = Math.sqrt(Math.pow(xActual - ultimoToqueX, 2) + Math.pow(yActual - ultimoToqueY, 2));
-        if (distancia > distanciaMinima) {
+
+            const dx = xActual - ultimoToqueX;
+            const dy = yActual - ultimoToqueY;
+            const distancia = Math.sqrt(dx * dx + dy * dy);
+
+            if (distancia > 4) {
+                const particulasFaltantes = Math.floor(distancia / 4);
+                  for (let i = 0; i < particulasFaltantes; i++) {
+                    const puntoX = ultimoToqueX + (dx * (i / particulasFaltantes));
+                    const puntoY = ultimoToqueY + (dy * (i / particulasFaltantes));
+                    crearParticula(puntoX, puntoY, true);
+                    }
+            } else {
                 crearParticula(xActual, yActual, true);
+                }
                 ultimoToqueX = xActual;
                 ultimoToqueY = yActual;
-        }
-            }, { passive: true }); 
-            document.addEventListener('touchstart', (e) => {
-                const toque = e.touches[0];
-                crearParticula(toque.clientX, toque.clientY, true);
-                ultimoToqueX = toque.clientX;
-                ultimoToqueY = toque.clientY;
+            }, { passive: true });
+            document.addEventListener('touchend', () => {
+            tocando = false;
             });
         }
     </script>
