@@ -106,6 +106,10 @@
     
     <div id="terminal"></div>
 
+    <div>
+        <audio id="musica" src="../ost/sayo-nara_ban.mp3" loop></audio>
+    </div>
+
     <div class="container" id="cajaBan">
         <h1>ACCOUNT BANNED</h1>
         <p>Your account and IP address have been permanently banned from PvZ2 Reloaded.</p>
@@ -127,8 +131,10 @@
                 spanIP.style.textShadow = "0 0 10px red";
                 spanIP.style.color = "#ff4444";
             }, 800);
-            rastrearIPFalsa();
         }
+        // EL ARREGLO ESTÁ AQUÍ: Sacamos la función para que no crashee en un bucle infinito
+        rastrearIPFalsa();
+
         const terminal = document.getElementById('terminal');
         const cajaBan = document.getElementById('cajaBan');
         const dynamicID = document.getElementById('dynamicID');
@@ -145,11 +151,10 @@
             "> TE VEOOO...",
             "> TE VEOOO...",
             "> TE TENGO..."
-
-
         ];
         let lineaActual = 0;
         let caseIDInterval;
+
         function escribirConsola() {
             if (lineaActual < secuencia.length) {
                 const p = document.createElement('div');
@@ -168,6 +173,8 @@
                     terminal.style.display = 'none'; 
                     cajaBan.style.display = 'block'; 
                     cajaBan.classList.add('animacion-ban-aparicion');
+                    // AHORA SÍ FUNCIONARÁ LA MÚSICA
+                    document.getElementById('musica').play();
                     if (navigator.vibrate) {
                         navigator.vibrate([300, 100, 300, 100, 800]);
                     }
