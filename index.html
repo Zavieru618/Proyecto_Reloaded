@@ -4,21 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>PvZ2 Reloaded</title>
 
     <style>
-       body {
-    background-color: #0a0a0f;
-    background-image:
+    body {
+        background-color: #0a0a0f;
+        background-image:
         linear-gradient(rgba(123, 47, 247, 0.15) 1px, transparent 1px),
         linear-gradient(90deg, rgba(123, 47, 247, 0.15) 1px, transparent 1px),
         radial-gradient(ellipse at 20% 30%, rgba(123, 47, 247, 0.3) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 70%, rgba(74, 0, 128, 0.4) 0%, transparent 50%);
-    background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
-    min-height: 100vh;
-    margin: 0;
-    font-family: 'Mifuente',sans-serif;
-    overflow-x: hidden;
+        background-size: 40px 40px, 40px 40px, 100% 100%, 100% 100%;
+        min-height: 100vh;
+        margin: 0;
+        font-family: 'Mifuente',sans-serif;
+        overflow-x: hidden;
     }
     nav{
         background-color: rgba(0, 0, 0, 0.2);
@@ -27,6 +28,7 @@
         display: flex;
         align-items: center;
         position: relative;
+        animation: entradaNav 0.9s ease forwards;
     }
     .logo{
         width: 150px;
@@ -67,6 +69,17 @@
         text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
+    details summary {
+    color: white;
+    text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    cursor: pointer;
+    }
+    details p {
+    color: white;
+    text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
     .particula{
         position: fixed;
         width: 15px;
@@ -89,6 +102,7 @@
         backdrop-filter: blur(10px);
         position: relative;
         overflow: visible;
+        animation: entradaTarjeta 0.7s ease forwards;
     }
     .img-mundo{
         position: absolute;
@@ -100,21 +114,21 @@
         animation: flotarMundo 3s ease-in-out infinite;
     }
     .quetzal-wrapper {
-    position: absolute;
-    top: -70px;
-    right: -96px;
-    left: auto;
-    width: 250px;
-    pointer-events: none;
-    z-index: 10;
-    animation: quetzalVolar 3.5s ease-in-out infinite;
-    transform-origin: center bottom;
+        position: absolute;
+        top: -70px;
+        right: -96px;
+        left: auto;
+        width: 250px;
+        pointer-events: none;
+        z-index: 10;
+        animation: quetzalVolar 3.5s ease-in-out infinite;
+        transform-origin: center bottom;
     }
     .quetzal-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    filter: drop-shadow(0 4px 12px rgba(123, 47, 247, 0.5));
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 4px 12px rgba(123, 47, 247, 0.5));
     }
     .tarjeta-contenido{
         display: flex;
@@ -148,6 +162,58 @@
         bottom: -40px;
         width: 100%;
     }
+    footer {
+        background-color: rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        padding: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+    footer a {
+        color: white;
+        text-decoration: none;
+        font-size: 20px;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
+    footer a:hover {
+        background: linear-gradient(135deg, #5f09e8, #a07800);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    footer p {
+        font-size: 14px;
+        opacity: 0.5;
+        filter: none;
+        text-shadow: none;
+        margin: 0;
+    }
+    .footer-links {
+        display: flex;
+        flex-direction: row;
+        gap: 30px;
+        margin: 6px, 0;
+    }
+    @keyframes entradaTarjeta{
+        0% { opacity: 0; transform: translateY(30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    .tarjeta {
+        animation: entradaTarjeta 0.7s ease forwards;
+    }
+    .texto h1 {
+        animation: entradaTarjeta 0.6s ease 0.2s both;
+    }
+    .texto p, .texto ol {
+        animation: entradaTarjeta 0.6s ease 0.4s both;
+    }
+    @keyframes entradaNav{
+        0% { opacity: 0; transform: translateY(-30px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
     @keyframes flotarMundo {
         0%   { transform: translateY(-50%) translateX(0); }
         50%  { transform: translateY(calc(-50% - 15px)) translateX(0); }
@@ -168,7 +234,7 @@
         0% { transform: scale(1); opacity: 1;}
         100% {transform: scale(0); opacity: 0; }
     }
-   @keyframes flotarNeblina {
+    @keyframes flotarNeblina {
         0% { transform: translate(-5%, 0) skewX(0deg); }
         100% { transform: translate(5%, 0) skewX(2deg); }
     }
@@ -181,7 +247,7 @@
         50%  { transform: translateY(-15px); }
         100% { transform: translateY(0px); }
     }
-   .nube-1 {
+    .nube-1 {
         width: 450px;
         height: 180px;
         background: radial-gradient(circle, rgba(210, 160, 255, 0.4) 0%, rgba(123, 47, 247, 0.25) 70%);
@@ -247,6 +313,8 @@
     }
     nav {
         flex-direction: column;
+        align-items: center;
+        gap: 10px;
         padding: 10px;
     }
     ol{
@@ -265,8 +333,9 @@
     .links {
         position: static;
         transform: none;
-        gap: 55px;
+        gap: 20px;
         justify-content: center;
+        flex-wrap: wrap;
     }
     nav a {
         font-size: 18px;
@@ -306,6 +375,9 @@
         box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
         z-index: 9999;
     }
+    .footer-links {
+        gap: 20px; /* o el valor que se vea bien en móvil */
+    }
     }
     </style>
 </head>
@@ -316,6 +388,7 @@
         <div class="links">
             <a href="#" class="active" onclick="mostrar('Inicio', this)">Inicio</a>
             <a href="#" onclick="mostrar('Novedades', this)">Novedades</a>
+            <a href="#" onclick="mostrar('FAQ', this)">FAQ</a>
             <a href="./html_alter/ban.html">Descarga</a>
         </div>
     </nav>
@@ -351,9 +424,49 @@
         </div>
     </div>
 
+    <div id="FAQ" class="seccion" style="display: none">
+        <div class="tarjeta">
+            <h1>Preguntas frecuentes</h1>
+    
+            <details>
+                <summary>¿Cómo instalo el mod?</summary>
+                <p>Descarga el APK y el OBB, instala el APK y coloca el OBB en su carpeta<br>
+                Revisar apartado de "Inicio" para más información</p>
+            </details>
+    
+            <details>
+                <summary>¿Dónde reporto bugs?</summary>
+                <p>Por ahora aquí: <a href="#">Discord</a> (próximamente).</p>
+            </details>
+    
+            <details>
+                <summary>¿Funciona en iOS?</summary>
+                <p>No, solo Android por el momento.</p>
+            </details>
+    
+        </div>
+    </div>
+
     <div class="nube nube-1"></div>
     <div class="nube nube-2"></div>
     <div class="nube nube-3"></div>
+
+    <footer>
+            <p>Mod no oficial. No afiliado a EA ni PopCap.</p>
+            <p>Hecho por JeancraftMC y la familia Reloaded.</p>
+            <div class="footer-links">
+                <a href="https://www.youtube.com/@JeancraftMC_" target="_blank">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+                <a href="#" target="_blank">
+                    <i class="fab fa-discord"></i> Discord
+                </a>
+                <a href="https://x.com/Pvz_Reloaded" target="_blank">
+                    <i class="fab fa-twitter"></i> Twitter        
+                </a>
+            </div>
+        <p>© 2026 PvZ2 Reloaded</p>
+    </footer>
 
     <script>
     function mostrar(id, elemento) {
