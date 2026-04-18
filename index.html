@@ -343,16 +343,16 @@
     }
     .quetzal-wrapper-faq{
         position: absolute;
-        width: 170px;
-        top: -26;
-        left: -70;
+        width: 150px;
+        top: -26px;
+        left: -70px;
         animation: quetzalCruzarMovil 25s ease-in-out infinite;
     }
     @keyframes quetzalCruzarMovil{
         0% {transform: translateX(0px) translateY(0px) scaleX(-1);}
         25% {transform: translateX(175px) translateY(-20px) scaleX(-1);}
-        49%  { transform: translateX(515px) translateY(0px) scaleX(-1); }
-        50%  { transform: translateX(515px) translateY(0px) scaleX(1); }
+        49%  { transform: translateX(350px) translateY(0px) scaleX(-1); }
+        50%  { transform: translateX(350px) translateY(0px) scaleX(1); }
         75%  { transform: translateX(175px) translateY(-20px) scaleX(1); }
         99%  { transform: translateX(0px) translateY(0px) scaleX(1); }
         100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
@@ -398,18 +398,14 @@
     .footer-links {
         gap: 20px; 
     }
-    @keyframes quetzalVuelo {
-    0%   { transform: translateX(0px) translateY(0px) scaleX(1); }
-    45%  { transform: translateX(350px) translateY(-30px) scaleX(1); }
-    50%  { transform: translateX(350px) translateY(-30px) scaleX(-1); }
-    95%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
-    100% { transform: translateX(0px) translateY(0px) scaleX(1); }
-    }
+    
     }
     </style>
 </head>
 <body>
     
+    <audio id="musica" src="./ost/PvZ2 RLD.mp3" loop autoplay></audio>
+
     <nav>
         <img src="./img/rdl.png" alt="logo" class="logo">
         <div class="links">
@@ -516,6 +512,21 @@
         const enlace = document.querySelector(`nav a[onclick*="${hash}"]`);
         mostrar(hash, enlace);
     }
+    const musica = document.getElementById('musica');
+    musica.volume = 0.3;
+
+    const intentarReproducir = () => {
+        musica.play().then(() => {
+            document.removeEventListener('click', intentarReproducir);
+            document.removeEventListener('keydown', intentarReproducir);
+            document.removeEventListener('touchstart', intentarReproducir);
+        }).catch(() => {
+
+        });
+    };
+        document.addEventListener('click', intentarReproducir);       // Si da clic
+        document.addEventListener('keydown', intentarReproducir);     // Si toca cualquier tecla
+        document.addEventListener('touchstart', intentarReproducir);  // Si toca la pantalla en celular
     });
 
     </script>
