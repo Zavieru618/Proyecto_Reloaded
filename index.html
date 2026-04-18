@@ -80,17 +80,6 @@
     text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
     filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
-    .particula{
-        position: fixed;
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: radial-gradient(circle, #5f09e8, #a07800);
-        pointer-events: none;
-        animation: desvanecer 0.8s ease forwards;
-        box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
-        z-index: 9999;
-    }
     .tarjeta{
         background: rgba(255, 255, 255, 0.04);
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -124,11 +113,36 @@
         animation: quetzalVolar 3.5s ease-in-out infinite;
         transform-origin: center bottom;
     }
+    .quetzal-wrapper-faq {
+        position: absolute;
+        top: -70px;
+        left: -96px;
+        width: 250px;
+        pointer-events: none;
+        z-index: 10;
+        animation: quetzalCruzar 25s ease-in-out infinite;
+    }
     .quetzal-wrapper img {
         width: 100%;
         height: auto;
         display: block;
         filter: drop-shadow(0 4px 12px rgba(123, 47, 247, 0.5));
+    }
+    .quetzal-wrapper-faq img {
+        width: 100%;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 4px 12px rgba(123, 47, 247, 0.5));
+    }
+    @keyframes quetzalCruzar {
+    0%   { transform: translateX(0px) translateY(0px) scaleX(-1); }
+    22%  { transform: translateX(515px) translateY(-30px) scaleX(-1); }
+    45%  { transform: translateX(1030px) translateY(0px) scaleX(-1); }
+    46%  { transform: translateX(1030px) translateY(0px) scaleX(1); }
+    68%  { transform: translate(515px) translateY(-30px) scaleX(1);}
+    90%  { transform: translateX(0px) translateY(0px) scaleX(1); }
+    91%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
+    100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
     }
     .tarjeta-contenido{
         display: flex;
@@ -143,6 +157,7 @@
         display: flex;
         justify-content: center;
         padding: 40px;
+        min-height: calc(100vh - 110px);
     }
     .nube {
         position: fixed;
@@ -229,10 +244,6 @@
     @font-face{
         font-family: 'Mifuente';
         src: url('mifuente.otf');
-    }
-    @keyframes desvanecer{
-        0% { transform: scale(1); opacity: 1;}
-        100% {transform: scale(0); opacity: 0; }
     }
     @keyframes flotarNeblina {
         0% { transform: translate(-5%, 0) skewX(0deg); }
@@ -330,6 +341,22 @@
         top: -26px;
         right: -70px;
     }
+    .quetzal-wrapper-faq{
+        position: absolute;
+        width: 170px;
+        top: -26;
+        left: -70;
+        animation: quetzalCruzarMovil 25s ease-in-out infinite;
+    }
+    @keyframes quetzalCruzarMovil{
+        0% {transform: translateX(0px) translateY(0px) scaleX(-1);}
+        25% {transform: translateX(175px) translateY(-20px) scaleX(-1);}
+        49%  { transform: translateX(515px) translateY(0px) scaleX(-1); }
+        50%  { transform: translateX(515px) translateY(0px) scaleX(1); }
+        75%  { transform: translateX(175px) translateY(-20px) scaleX(1); }
+        99%  { transform: translateX(0px) translateY(0px) scaleX(1); }
+        100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
+    }
     .links {
         position: static;
         transform: none;
@@ -368,15 +395,15 @@
     .nube-izq, .nube-der {
         display: none;
     }
-    .particula{
-        width: 20px;
-        height: 20px;
-        animation: desvanecer 1s ease forwards;
-        box-shadow: 0 0 10px rgba(123, 47, 247, 0.7);
-        z-index: 9999;
-    }
     .footer-links {
-        gap: 20px; /* o el valor que se vea bien en móvil */
+        gap: 20px; 
+    }
+    @keyframes quetzalVuelo {
+    0%   { transform: translateX(0px) translateY(0px) scaleX(1); }
+    45%  { transform: translateX(350px) translateY(-30px) scaleX(1); }
+    50%  { transform: translateX(350px) translateY(-30px) scaleX(-1); }
+    95%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
+    100% { transform: translateX(0px) translateY(0px) scaleX(1); }
     }
     }
     </style>
@@ -426,6 +453,10 @@
 
     <div id="FAQ" class="seccion" style="display: none">
         <div class="tarjeta">
+            <div class="quetzal-wrapper-faq">
+                <img src="./img/quetzalcoatlus.png" alt="quetzalcoatlus">
+            </div>
+
             <h1>Preguntas frecuentes</h1>
     
             <details>
@@ -443,7 +474,7 @@
                 <summary>¿Funciona en iOS?</summary>
                 <p>No, solo Android por el momento.</p>
             </details>
-    
+            
         </div>
     </div>
 
@@ -486,88 +517,7 @@
         mostrar(hash, enlace);
     }
     });
-    function crearParticula(x, y, esMovil){
-        const particula = document.createElement('div');
-        particula.classList.add('particula');
 
-        const baseSize = esMovil ? 18 : 12;
-        const sizeVariation = Math.random() * 8;
-        const finalSize = baseSize + sizeVariation;
-
-        const driftRange = esMovil ? 30 : 50;
-        const driftX = (Math.random() - 0.5) * driftRange;
-        const driftY = ((Math.random() * -driftRange) - 10);
-
-        const duracion = esMovil ? 0.8 : 1.5;
-
-        particula.style.setProperty('--size', `${finalSize}px`);
-        particula.style.setProperty('--driftX', `${driftX}px`);
-        particula.style.setProperty('--driftY', `${driftY}px`);
-        particula.style.setProperty('--duracion', `${duracion}s`);
-
-        particula.style.left = (x - finalSize / 2) + 'px';
-        particula.style.top = (y - finalSize / 2) + 'px';
-
-        document.body.appendChild(particula);
-
-        setTimeout(() =>{
-            particula.remove();
-        }, duracion * 1000);
-    }
-
-    if (window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-            crearParticula(e.clientX, e.clientY, false);
-        });
-    }
-
-    if (window.innerWidth <= 768) {
-        let ultimoToqueX = 0;
-        let ultimoToqueY = 0;
-        let tocando = false;
-
-        document.addEventListener('touchstart', (e) => {
-            const toque = e.touches[0];
-            ultimoToqueX = toque.clientX;
-            ultimoToqueY = toque.clientY;
-            tocando = true;
-            crearParticula(ultimoToqueX, ultimoToqueY, true);
-        });
-        
-        document.addEventListener('touchmove', (e) => {
-            if (!tocando) return;
-                
-            const toque = e.touches[0];
-            const xActual = toque.clientX;
-            const yActual = toque.clientY;
-
-            const dx = xActual - ultimoToqueX;
-            const dy = yActual - ultimoToqueY;
-            const distancia = Math.sqrt(dx * dx + dy * dy);
-
-            if (distancia > 4) {
-                const particulasFaltantes = Math.floor(distancia / 4);
-                  for (let i = 0; i < particulasFaltantes; i++) {
-                    let puntoX = ultimoToqueX + (dx * (i / particulasFaltantes));
-                    let puntoY = ultimoToqueY + (dy * (i / particulasFaltantes));
-
-                    puntoX += (Math.random() - 0.5) * 16;
-                    puntoY += (Math.random() - 0.5) * 16;
-                    
-                    crearParticula(puntoX, puntoY, true);
-                  }
-            } else {
-                crearParticula(xActual, yActual, true);
-            }
-            
-            ultimoToqueX = xActual;
-            ultimoToqueY = yActual;
-        }, { passive: true });
-        
-        document.addEventListener('touchend', () => {
-            tocando = false;
-        });
-    }
     </script>
 </body>
 </html>
