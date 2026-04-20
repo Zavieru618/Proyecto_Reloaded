@@ -22,9 +22,11 @@
         overflow-x: hidden;
     }
     nav{
-        background-color: rgba(0, 0, 0, 0.2);
-        backdrop-filter: blur(10px);
-        padding: 5px 20px;
+        background: rgba(255, 255, 255, 0.04);
+        border-bottom: 1px solid rgba(123, 47, 247, 0.2);
+        box-shadow: 0 4px 20px rgba(123, 47, 247, 0.2);
+        backdrop-filter: blur(8px);
+        padding: 2px 12px;
         display: flex;
         align-items: center;
         position: relative;
@@ -34,9 +36,10 @@
     display: none;
     }
     .logo{
-        width: 150px;
-        height: 100px;
+        width: 100px;
+        height: 75px;
         border-radius: 9%;
+        object-fit: contain;
     }
     .links{
         position: absolute;
@@ -48,7 +51,7 @@
     nav a{
         color: white;
         text-decoration: none;
-        font-size: 35px;
+        font-size: 29px;
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
     nav a:hover{
@@ -91,6 +94,7 @@
         margin: 40px auto;
         max-width: 1000px;
         width: 85%;
+        box-sizing: border-box;
         backdrop-filter: blur(10px);
         position: relative;
         overflow: visible;
@@ -98,11 +102,13 @@
     }
     .img-mundo{
         position: absolute;
-        left: -80px;
-        top: 50%;
+        left: -58px;
+        top: 44%;
         transform: translateY(-50%);
-        width: 250px;
+        width: 225px;
         height: auto;
+        z-index: 10;
+        pointer-events: none;
         animation: flotarMundo 3s ease-in-out infinite;
     }
     .quetzal-wrapper {
@@ -159,8 +165,18 @@
     .seccion{
         display: flex;
         justify-content: center;
+        align-items: flex-start;
         padding: 40px;
-        min-height: calc(100vh - 110px);
+        min-height: calc(100vh - 88px);
+    }
+    #Inicio {
+        flex-direction: column;
+        align-items: center;
+    }
+    .tarjeta-trailers {
+        margin-top: 8px;
+        position: relative;
+        z-index: 2;
     }
     .nube {
         position: fixed;
@@ -181,7 +197,9 @@
         width: 100%;
     }
     footer {
-        background-color: rgba(0, 0, 0, 0.2);
+        background: rgba(0, 0, 0, 0.25);
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(10px);
         padding: 20px;
         text-align: center;
@@ -214,6 +232,36 @@
         flex-direction: row;
         gap: 30px;
         margin: 6px, 0;
+    }
+    .trailers-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+    }
+    .trailer-link {
+        display: block;
+        text-decoration: none;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: rgba(255, 255, 255, 0.03);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .trailer-link:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 20px rgba(123, 47, 247, 0.25);
+    }
+    .trailer-link img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+    }
+    .trailer-link span {
+        display: block;
+        padding: 10px 12px;
+        color: white;
+        text-shadow: 1px 1px 0 black, -1px -1px 0 black;
     }
     @keyframes entradaTarjeta{
         0% { opacity: 0; transform: translateY(30px); }
@@ -329,14 +377,16 @@
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
-        padding: 10px 20px;
+        padding: 6px 16px;
+        position: relative;
+        z-index: 1000;
     }
     .hamburger {
         display: block;
         background: none;
         border: none;
         color: white;
-        font-size: 28px;
+        font-size: 24px;
         cursor: pointer;
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
@@ -374,13 +424,25 @@
         position: absolute;
         top: 100%;
         left: 0;
+        right: 0;
         width: 100%;
-        background-color: rgba(0, 0, 0, 0.85);
+        transform: none;
+        background: linear-gradient(
+            165deg,
+            rgba(255, 255, 255, 0.04) 0%,
+            rgba(10, 8, 20, 0.72) 30%,
+            rgba(20, 8, 40, 0.68) 70%,
+            rgba(74, 0, 128, 0.22) 100%
+        );
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(123, 47, 247, 0.2);
         flex-direction: column;
         align-items: center;
         gap: 20px;
         padding: 20px 0;
         z-index: 100;
+        box-sizing: border-box;
     }
     .links.abierto {
         display: flex;
@@ -389,14 +451,14 @@
         font-size: 22px;
     }
     .logo {
-        width: 100px;
-        height: 70px;
+        width: 84px;
+        height: 58px;
     }
     .img-mundo {
         position: static;
         transform: none;
-        width: 380px;
-        margin: 0px;
+        width: min(78vw, 300px);
+        margin: 0 0 10px;
         display: block;
         animation: flotarMundoMovil 3s ease-in-out infinite;
     }
@@ -409,12 +471,15 @@
         text-align: center;
     }
     .seccion {
-        padding: 50px;
+        padding: 34px 16px;
     }
     .tarjeta {
         padding: 20px;
         width: 95%;
         margin-top: 50px;    
+    }
+    .tarjeta-trailers {
+        margin-top: 18px;
     }
     .nube-izq, .nube-der {
         display: none;
@@ -451,15 +516,25 @@
                     <div class="texto">
             <h1>¡Bienvenido a Zomburbia, viajero!</h1>
             <p>Plants vs Zombies 2 Reloaded te da la bienvenida a Zomburbia, el mundo ideal para comenzar con tu nueva aventura :D<br>
-            Aquí encontrarás una dificultad diseñada para todo tipo de jugador, desde los más nuevos como los más experimentados.<br>
-            <br>¿Como instalar Reloaded?</p>
-            <ol>
-                <li>Para descargar el mod ve en el apartado de "Descarga"</li>
-                <li>Baja el apk y archivo OBB que se encuentran en la carpeta</li>
-                <li>Instala el apk en tu dispositivo. Si hay error o te expulsa te recomiendo instalar "XAPK Installer" e instalar desde ahí</li>
-                <li>Pegas el archivo OBB en su carpeta "#"</li>
-            </ol>
+            Aquí encontrarás una dificultad diseñada para todo tipo de jugador, desde los más nuevos como los más experimentados.</p>
                 </div>
+            </div>
+        </div>
+        <div class="tarjeta tarjeta-trailers">
+            <h1>Trailers</h1>
+            <div class="trailers-grid">
+                <a class="trailer-link" href="https://www.youtube.com/watch?v=CaL4-PAeiW0" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/CaL4-PAeiW0/hqdefault.jpg" alt="Trailer PvZ2 Reloaded 1" loading="lazy">
+                    <span>Trailer 1</span>
+                </a>
+                <a class="trailer-link" href="https://www.youtube.com/watch?v=8HpF9JBhxUg" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/8HpF9JBhxUg/hqdefault.jpg" alt="Trailer PvZ2 Reloaded 2" loading="lazy">
+                    <span>Trailer 2</span>
+                </a>
+                <a class="trailer-link" href="https://www.youtube.com/watch?v=6goNYb-6Byo" target="_blank" rel="noopener noreferrer">
+                    <img src="https://img.youtube.com/vi/6goNYb-6Byo/hqdefault.jpg" alt="Trailer PvZ2 Reloaded 3" loading="lazy">
+                    <span>Trailer 3</span>
+                </a>
             </div>
         </div>
     </div>
@@ -482,12 +557,15 @@
             </div>
 
             <h1>Preguntas frecuentes</h1>
-    
-            <details>
-                <summary>¿Cómo instalo el mod?</summary>
-                <p>Descarga el APK y el OBB, instala el APK y coloca el OBB en su carpeta<br>
-                Revisar apartado de "Inicio" para más información</p>
-            </details>
+                <details>
+                    <summary>¿Cómo instalo el mod?</summary>
+                    <p>
+                    1. Ve al apartado de "Descarga"<br>
+                    2. Baja el APK y el archivo OBB<br>
+                    3. Instala el APK. Si hay error usa "XAPK Installer"<br>
+                    4. Pega el OBB en su carpeta "#"
+                    </p>
+                </details>
     
             <details>
                 <summary>¿Dónde reporto bugs?</summary>
