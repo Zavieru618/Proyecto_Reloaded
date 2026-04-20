@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="icon.png">
+    <link rel="icon" href="icon.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>PvZ2 Reloaded</title>
 
@@ -623,7 +623,7 @@
     <audio id="musica" src="./ost/PvZ2 RLD.mp3" loop preload="auto"></audio>
 
     <nav>
-        <img src="./img/rdl.png" alt="logo" class="logo">
+        <img src="./img/rdl.webp" alt="logo" class="logo">
         <button class="hamburger" onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
@@ -639,7 +639,7 @@
     <div id="Inicio" class="seccion">
         <div class="tarjeta">
             <div class="tarjeta-contenido">
-                <img src="img/logo1.png" alt="mundo" class="img-mundo">
+                <img src="img/logo1.webp" alt="mundo" class="img-mundo">
                     <div class="texto">
             <h1>¡Bienvenido a Zomburbia, viajero!</h1>
             <p>Plants vs Zombies 2 Reloaded te da la bienvenida a Zomburbia, el mundo ideal para comenzar con tu nueva aventura :D<br>
@@ -669,7 +669,7 @@
     <div id="Novedades" class="seccion" style="display: none">
         <div class="tarjeta">
             <div class="quetzal-wrapper">
-                <img src="./img/quetzalcoatlus.png" alt="quetzalcoatlus">
+                <img src="./img/quetzalcoatlus.webp" alt="quetzalcoatlus">
             </div>
         <h1>Novedades</h1>
         <p>Sin novedades por el momento.<br>
@@ -680,7 +680,7 @@
     <div id="FAQ" class="seccion" style="display: none">
         <div class="tarjeta">
             <div class="quetzal-wrapper-faq">
-                <img src="./img/quetzalcoatlus.png" alt="quetzalcoatlus">
+                <img src="./img/quetzalcoatlus.webp" alt="quetzalcoatlus">
             </div>
 
             <h1>Preguntas frecuentes</h1>
@@ -791,17 +791,6 @@
         discoMusica.classList.toggle('girando', reproduciendo);
         iconoMusica.className = reproduciendo ? 'fas fa-pause' : 'fas fa-play';
         estadoMusica.textContent = reproduciendo ? 'Sonando ahora' : 'Pausada';
-    };
-
-    const intentarReproducir = () => {
-        musica.play().then(() => {
-            actualizarUIReproduccion(true);
-            document.removeEventListener('click', intentarReproducir);
-            document.removeEventListener('keydown', intentarReproducir);
-            document.removeEventListener('touchstart', intentarReproducir);
-        }).catch(() => {
-            actualizarUIReproduccion(false);
-        });
     };
     if (btnMusica) {
         btnMusica.addEventListener('click', async () => {
