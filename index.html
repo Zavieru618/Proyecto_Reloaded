@@ -65,6 +65,11 @@
         text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
+    h3{
+        color:white;
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+    }
     p{
         color:white;
         text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
@@ -145,10 +150,10 @@
     }
     @keyframes quetzalCruzar {
     0%   { transform: translateX(0px) translateY(0px) scaleX(-1); }
-    22%  { transform: translateX(515px) translateY(-30px) scaleX(-1); }
-    45%  { transform: translateX(1030px) translateY(0px) scaleX(-1); }
-    46%  { transform: translateX(1030px) translateY(0px) scaleX(1); }
-    68%  { transform: translate(515px) translateY(-30px) scaleX(1);}
+    22%  { transform: translateX(450px) translateY(-30px) scaleX(-1); }
+    45%  { transform: translateX(900px) translateY(0px) scaleX(-1); }
+    46%  { transform: translateX(900px) translateY(0px) scaleX(1); }
+    68%  { transform: translateX(450px) translateY(-30px) scaleX(1);}
     90%  { transform: translateX(0px) translateY(0px) scaleX(1); }
     91%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
     100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
@@ -315,7 +320,7 @@
         background: radial-gradient(circle, rgba(210, 160, 255, 0.4) 0%, rgba(123, 47, 247, 0.25) 70%);
         border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
         bottom: auto;
-        top: 80%;
+        top: 84%;
         left: -100px;
         animation: flotarNeblina 25s infinite alternate ease-in-out;
     }
@@ -335,7 +340,7 @@
         background: radial-gradient(circle, rgba(180, 120, 220, 0.5) 0%, rgba(74, 0, 128, 0.3) 70%);
         border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
         bottom: auto;
-        top: 90%;
+        top: 94%;
         right: -70px;
         animation: flotarNeblina 18s infinite alternate-reverse ease-in-out;
         animation-delay: -5s;
@@ -356,7 +361,7 @@
         background: radial-gradient(circle, rgba(190, 140, 240, 0.45) 0%, rgba(123, 47, 247, 0.3) 70%);
         border-radius: 50% 70% 50% 70% / 70% 50% 70% 50%;
         bottom: auto;
-        top: 90%;
+        top: 94%;
         left: 20%;
         animation: flotarNeblina 12s infinite alternate ease-in-out;
     }
@@ -369,6 +374,88 @@
         width: 45%; height: 85%; top: -25%; right: 10%;
         border-radius: 50% 70% 30% 70%;
         background: inherit;
+    }
+    .panel-musica {
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        z-index: 20;
+        width: min(280px, calc(100vw - 24px));
+        background: rgba(17, 10, 34, 0.7);
+        border: 1px solid rgba(123, 47, 247, 0.35);
+        border-radius: 14px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .disco {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        background:
+            radial-gradient(circle at center, #0d0d0d 0 9px, #a07800 9px 12px, #181818 12px 100%),
+            repeating-radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0 2px, rgba(0, 0, 0, 0.15) 2px 4px);
+        border: 2px solid rgba(255, 255, 255, 0.12);
+        box-shadow: 0 0 12px rgba(123, 47, 247, 0.3);
+    }
+    .disco.girando {
+        animation: girarDisco 2.8s linear infinite;
+    }
+    @keyframes girarDisco {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+    .musica-info {
+        min-width: 0;
+        flex: 1;
+    }
+    .musica-info h3 {
+        margin: 0 0 2px;
+        color: white;
+        font-size: 20px;
+        line-height: 1;
+        text-shadow: 1px 1px 0 black, -1px -1px 0 black;
+    }
+    .musica-info p {
+        margin: 0;
+        line-height: 1.2;
+        filter: none;
+    }
+    .musica-autor {
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+        text-shadow: 1px 1px 0 black;
+    }
+    .estado-musica {
+        margin: 3px 0 0;
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 14px;
+        text-shadow: 1px 1px 0 black;
+    }
+    .btn-musica {
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        background: rgba(123, 47, 247, 0.25);
+        color: white;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 16px;
+        display: grid;
+        place-items: center;
+        transition: transform 0.15s ease, background 0.2s ease;
+    }
+    .btn-musica:hover {
+        transform: scale(1.05);
+        background: rgba(123, 47, 247, 0.45);
+    }
+    .btn-musica:active {
+        transform: scale(0.98);
     }
     @media (max-width: 768px) {
     .nube { display: none; 
@@ -473,10 +560,24 @@
     .seccion {
         padding: 34px 16px;
     }
+    #Novedades,
+    #FAQ {
+        padding-bottom: 14px;
+    }
+    #Novedades {
+        min-height: calc(100vh - 140px);
+    }
+    #FAQ {
+        min-height: calc(100vh - 250px);
+    }
     .tarjeta {
         padding: 20px;
         width: 95%;
         margin-top: 50px;    
+    }
+    #Novedades .tarjeta,
+    #FAQ .tarjeta {
+        margin-top: 14px;
     }
     .tarjeta-trailers {
         margin-top: 18px;
@@ -487,13 +588,39 @@
     .footer-links {
         gap: 20px; 
     }
+    .panel-musica {
+        position: fixed;
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+        bottom: 12px;
+        z-index: 20;
+        margin: 0;
+        width: min(250px, calc(100vw - 24px));
+        padding: 10px;
+        gap: 10px;
+    }
+    footer {
+        margin-top: 10px;
+        padding-top: 12px;
+    }
+    .disco {
+        width: 48px;
+        height: 48px;
+    }
+    .musica-info h3 {
+        font-size: 18px;
+    }
+    .estado-musica {
+        font-size: 13px;
+    }
     
     }
     </style>
 </head>
 <body>
     
-    <audio id="musica" src="./ost/PvZ2 RLD.mp3" loop autoplay></audio>
+    <audio id="musica" src="./ost/PvZ2 RLD.mp3" loop preload="auto"></audio>
 
     <nav>
         <img src="./img/rdl.png" alt="logo" class="logo">
@@ -583,6 +710,17 @@
     <div class="nube nube-1"></div>
     <div class="nube nube-2"></div>
     <div class="nube nube-3"></div>
+    <div class="panel-musica" id="panel-musica">
+        <div class="disco" id="disco-musica" aria-hidden="true"></div>
+        <div class="musica-info">
+            <h3>sayo-nara</h3>
+            <p class="musica-autor">Por M_to</p>
+            <p class="estado-musica" id="estado-musica">Pausada</p>
+        </div>
+        <button class="btn-musica" id="btn-musica" type="button" aria-label="Reproducir o pausar música">
+            <i class="fas fa-play" id="icono-musica"></i>
+        </button>
+    </div>
 
     <footer>
             <p>Mod no oficial. No afiliado a EA ni PopCap.</p>
@@ -620,17 +758,73 @@
         mostrar(hash, enlace);
     }
     const musica = document.getElementById('musica');
+    const panelMusica = document.getElementById('panel-musica');
+    const footer = document.querySelector('footer');
+    const discoMusica = document.getElementById('disco-musica');
+    const btnMusica = document.getElementById('btn-musica');
+    const iconoMusica = document.getElementById('icono-musica');
+    const estadoMusica = document.getElementById('estado-musica');
+    if (!musica) return;
     musica.volume = 0.3;
+
+    const ajustarPanelMusicaConFooter = () => {
+        if (!panelMusica || !footer) return;
+        const esMovil = window.matchMedia('(max-width: 768px)').matches;
+        if (!esMovil) {
+            panelMusica.style.bottom = '20px';
+            panelMusica.style.left = 'auto';
+            panelMusica.style.right = '20px';
+            panelMusica.style.transform = 'none';
+            return;
+        }
+        const footerRect = footer.getBoundingClientRect();
+        const solape = window.innerHeight - footerRect.top + 10;
+        const extra = Math.max(0, solape);
+        panelMusica.style.bottom = `${12 + extra}px`;
+        panelMusica.style.left = '50%';
+        panelMusica.style.right = 'auto';
+        panelMusica.style.transform = 'translateX(-50%)';
+    };
+
+    const actualizarUIReproduccion = (reproduciendo) => {
+        if (!discoMusica || !iconoMusica || !estadoMusica) return;
+        discoMusica.classList.toggle('girando', reproduciendo);
+        iconoMusica.className = reproduciendo ? 'fas fa-pause' : 'fas fa-play';
+        estadoMusica.textContent = reproduciendo ? 'Sonando ahora' : 'Pausada';
+    };
 
     const intentarReproducir = () => {
         musica.play().then(() => {
+            actualizarUIReproduccion(true);
             document.removeEventListener('click', intentarReproducir);
             document.removeEventListener('keydown', intentarReproducir);
             document.removeEventListener('touchstart', intentarReproducir);
         }).catch(() => {
-
+            actualizarUIReproduccion(false);
         });
     };
+    if (btnMusica) {
+        btnMusica.addEventListener('click', async () => {
+            if (musica.paused) {
+                try {
+                    await musica.play();
+                    actualizarUIReproduccion(true);
+                } catch {
+                    actualizarUIReproduccion(false);
+                }
+            } else {
+                musica.pause();
+                actualizarUIReproduccion(false);
+            }
+        });
+    }
+        musica.addEventListener('play', () => actualizarUIReproduccion(true));
+        musica.addEventListener('pause', () => actualizarUIReproduccion(false));
+        actualizarUIReproduccion(!musica.paused);
+        ajustarPanelMusicaConFooter();
+        window.addEventListener('scroll', ajustarPanelMusicaConFooter, { passive: true });
+        window.addEventListener('resize', ajustarPanelMusicaConFooter);
+        intentarReproducir();
         document.addEventListener('click', intentarReproducir);       
         document.addEventListener('keydown', intentarReproducir);     
         document.addEventListener('touchstart', intentarReproducir); 
