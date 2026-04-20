@@ -30,6 +30,9 @@
         position: relative;
         animation: entradaNav 0.9s ease forwards;
     }
+    .hamburger {
+    display: none;
+    }
     .logo{
         width: 150px;
         height: 100px;
@@ -323,10 +326,19 @@
     .nube { display: none; 
     }
     nav {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        gap: 10px;
-        padding: 10px;
+        padding: 10px 20px;
+    }
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 28px;
+        cursor: pointer;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
     ol{
         padding-left: 20px;
@@ -358,14 +370,23 @@
         100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
     }
     .links {
-        position: static;
-        transform: none;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.85);
+        flex-direction: column;
+        align-items: center;
         gap: 20px;
-        justify-content: center;
-        flex-wrap: wrap;
+        padding: 20px 0;
+        z-index: 100;
+    }
+    .links.abierto {
+        display: flex;
     }
     nav a {
-        font-size: 18px;
+        font-size: 22px;
     }
     .logo {
         width: 100px;
@@ -375,7 +396,7 @@
         position: static;
         transform: none;
         width: 380px;
-        margin: 30px;
+        margin: 0px;
         display: block;
         animation: flotarMundoMovil 3s ease-in-out infinite;
     }
@@ -387,9 +408,12 @@
         margin-left: 0;
         text-align: center;
     }
+    .seccion {
+        padding: 50px;
+    }
     .tarjeta {
         padding: 20px;
-        width: 90%;
+        width: 95%;
         margin-top: 50px;    
     }
     .nube-izq, .nube-der {
@@ -408,13 +432,17 @@
 
     <nav>
         <img src="./img/rdl.png" alt="logo" class="logo">
-        <div class="links">
+        <button class="hamburger" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="links" id="menu-links">
             <a href="#" class="active" onclick="mostrar('Inicio', this)">Inicio</a>
             <a href="#" onclick="mostrar('Novedades', this)">Novedades</a>
             <a href="#" onclick="mostrar('FAQ', this)">FAQ</a>
             <a href="./html_alter/ban.html">Descarga</a>
         </div>
     </nav>
+    
 
     <div id="Inicio" class="seccion">
         <div class="tarjeta">
@@ -468,7 +496,7 @@
     
             <details>
                 <summary>¿Funciona en iOS?</summary>
-                <p>No, solo Android por el momento.</p>
+                <p>No, solo AndroidDeidad.</p>
             </details>
             
         </div>
@@ -497,6 +525,7 @@
 
     <script>
     function mostrar(id, elemento) {
+            document.getElementById('menu-links').classList.remove('abierto');
             document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
             document.getElementById(id).style.display = 'block';
 
@@ -524,10 +553,13 @@
 
         });
     };
-        document.addEventListener('click', intentarReproducir);       // Si da clic
-        document.addEventListener('keydown', intentarReproducir);     // Si toca cualquier tecla
-        document.addEventListener('touchstart', intentarReproducir);  // Si toca la pantalla en celular
+        document.addEventListener('click', intentarReproducir);       
+        document.addEventListener('keydown', intentarReproducir);     
+        document.addEventListener('touchstart', intentarReproducir); 
     });
+    function toggleMenu() {
+        document.getElementById('menu-links').classList.toggle('abierto');
+    }
 
     </script>
 </body>
