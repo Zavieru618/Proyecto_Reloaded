@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plants vs Zombies 2 Reloaded - Bienvenido a Zomburbia. Un mod con dificultad diseñada para todo tipo de jugador.">
+    <meta name="theme-color" content="#7b2ff7">
     <link rel="icon" href="icon.webp">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <title>PvZ2 Reloaded</title>
 
     <style>
+    html {
+        scroll-behavior: smooth;
+    }
     body {
         background-color: #0a0a0f;
         background-image:
@@ -33,7 +38,7 @@
         animation: entradaNav 0.9s ease forwards;
     }
     .hamburger {
-    display: none;
+        display: none;
     }
     .logo{
         width: 100px;
@@ -81,15 +86,15 @@
         filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
     details summary {
-    color: white;
-    text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
-    cursor: pointer;
+        color: white;
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+        cursor: pointer;
     }
     details p {
-    color: white;
-    text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
-    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+        color: white;
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, -2px 2px 0px black;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
     }
     .tarjeta{
         background: rgba(255, 255, 255, 0.04);
@@ -149,14 +154,14 @@
         filter: drop-shadow(0 4px 12px rgba(123, 47, 247, 0.5));
     }
     @keyframes quetzalCruzar {
-    0%   { transform: translateX(0px) translateY(0px) scaleX(-1); }
-    22%  { transform: translateX(450px) translateY(-30px) scaleX(-1); }
-    45%  { transform: translateX(900px) translateY(0px) scaleX(-1); }
-    46%  { transform: translateX(900px) translateY(0px) scaleX(1); }
-    68%  { transform: translateX(450px) translateY(-30px) scaleX(1);}
-    90%  { transform: translateX(0px) translateY(0px) scaleX(1); }
-    91%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
-    100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
+        0%   { transform: translateX(0px) translateY(0px) scaleX(-1); }
+        22%  { transform: translateX(450px) translateY(-30px) scaleX(-1); }
+        45%  { transform: translateX(900px) translateY(0px) scaleX(-1); }
+        46%  { transform: translateX(900px) translateY(0px) scaleX(1); }
+        68%  { transform: translateX(450px) translateY(-30px) scaleX(1);}
+        90%  { transform: translateX(0px) translateY(0px) scaleX(1); }
+        91%  { transform: translateX(0px) translateY(0px) scaleX(-1); }
+        100% { transform: translateX(0px) translateY(0px) scaleX(-1); }
     }
     .tarjeta-contenido{
         display: flex;
@@ -300,6 +305,7 @@
     @font-face{
         font-family: 'Mifuente';
         src: url('mifuente.otf');
+        font-display: swap;
     }
     @keyframes flotarNeblina {
         0% { transform: translate(-5%, 0) skewX(0deg); }
@@ -457,6 +463,59 @@
     .btn-musica:active {
         transform: scale(0.98);
     }
+    .rol-titulo {
+        color: white;
+        text-shadow: 2px 2px 0px black, -2px -2px 0px black, 2px -2px 0px black, -2px 2px 0px black;
+        filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+        font-size: 24px;
+        margin-top: 40px;
+        margin-bottom: 15px;
+        border-bottom: 2px solid rgba(123, 47, 247, 0.4);
+        padding-bottom: 10px;
+        text-align: center;
+    }
+    .creditos-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+        align-items: center;
+    }
+    .credito-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(123, 47, 247, 0.3);
+        border-radius: 10px;
+        padding: 10px;
+        text-align: center;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .credito-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 16px rgba(123, 47, 247, 0.25);
+    }
+    .credito-card h3 {
+        margin: 0 0 2px;
+        font-size: 15px;
+    }
+    .credito-card h3:last-child {
+        margin: 0;
+    }
+    .credito-rol {
+        font-size: 11px;
+        opacity: 0.7;
+        margin: 0 0 8px;
+        text-shadow: none !important;
+        filter: none !important;
+        color: rgba(255,255,255,0.75) !important;
+    }
+    .credito-links {
+        display: flex;
+        justify-content: center;
+        gap: 12px;
+    }
+    .credito-links a {
+        color: white;
+        font-size: 16px;
+    }
     @media (max-width: 768px) {
     .nube { display: none; 
     }
@@ -561,7 +620,8 @@
         padding: 34px 16px;
     }
     #Novedades,
-    #FAQ {
+    #FAQ,
+    #Creditos {
         padding-bottom: 14px;
     }
     #Novedades {
@@ -576,8 +636,18 @@
         margin-top: 50px;    
     }
     #Novedades .tarjeta,
-    #FAQ .tarjeta {
+    #FAQ .tarjeta,
+    #Creditos .tarjeta {
         margin-top: 14px;
+    }
+    .rol-titulo {
+        font-size: 21px;
+        margin-top: 25px;
+        margin-bottom: 10px;
+    }
+    .creditos-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 8px;
     }
     .tarjeta-trailers {
         margin-top: 18px;
@@ -632,6 +702,7 @@
             <a href="#" onclick="mostrar('Novedades', this)">Novedades</a>
             <a href="#" onclick="mostrar('FAQ', this)">FAQ</a>
             <a href="./html_alter/ban.html">Descarga</a>
+            <a href="#" onclick="mostrar('Creditos', this)">Créditos</a>
         </div>
     </nav>
     
@@ -707,6 +778,253 @@
         </div>
     </div>
 
+    <div id="Creditos" class="seccion" style="display: none">
+    <div class="tarjeta">
+        <div class="quetzal-wrapper">
+            <img src="./img/quetzalcoatlus.webp" alt="quetzalcoatlus">
+        </div>
+        <h1>Créditos</h1>
+        <p>El equipo detrás de PvZ2 Reloaded:</p>
+        <h2 class="rol-titulo">Creador y director principal</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>Jeancraft</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@JeancraftMC_" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://x.com/Pvz_Reloaded" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Administradores comunitarios</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>Zavieru</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://youtube.com/@zavieru618" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.tiktok.com/@xav618_" target="_blank"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Zverz</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Zverz111" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@Zverz1973" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Codirectores</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>(Ghost/Ice/ZCorp) Alixso</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Ice_Alixso" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.youtube.com/@alixso-zcorp" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card"><h3>Kowal</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@tkowal2" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>VanilloCone</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@coneofvanillomint" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Weiq_XD</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Weiq_XD" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Zverz</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Zverz111" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Escritor</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>Yamon</h3>
+                <p class="credito-rol">(The Playlist/Renders guy)</p>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Control de calidad</h2>
+        <div class="creditos-grid">
+            <div class="credito-card"><h3>Ebes</h3></div>
+            <div class="credito-card"><h3>ELGABISTEIN</h3></div>
+            <div class="credito-card"><h3>Mecha_007</h3></div>
+            <div class="credito-card"><h3>Mr. Gaming</h3></div>
+            <div class="credito-card"><h3>Mr. Potato</h3></div>
+            <div class="credito-card"><h3>oscar_soul178</h3></div>
+            <div class="credito-card"><h3>Wazino/Waz</h3></div>
+            <div class="credito-card"><h3>werterdidnot</h3></div>
+        </div>
+
+        <h2 class="rol-titulo">Codificadores</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>A8445</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@A8445-z6g" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="https://discord.gg/9qdrE4wSrJ" target="_blank"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div class="credito-card"><h3>autumn_02</h3></div>
+            <div class="credito-card">
+                <h3>(Ghost/Ice/ZCorp) Alixso</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Ice_Alixso" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Jeancraft</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@JeancraftMC_" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+                </div>
+            <div class="credito-card">
+                <h3>Kowal</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@tkowal2" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Codirectores artísticos</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>HY-MILTONPAK</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@hy-miltonpak" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Tezca</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/@Tezca_3K" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>UrielXero</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@urielxero" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Artistas</h2>
+        <div class="creditos-grid">
+            <div class="credito-card"><h3>bufo_98</h3></div>
+            <div class="credito-card"><h3>Endy678</h3></div>
+            <div class="credito-card"><h3>KatsuMau</h3></div>
+            <div class="credito-card"><h3>Name</h3></div>
+            <div class="credito-card">
+                <h3>Oribakyun</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/@Oribakyun1" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+            <div class="credito-card"><h3>TheRDz</h3></div>
+            <div class="credito-card"><h3>tuffalcoholic</h3></div>
+            <div class="credito-card">
+                <h3>Uriel Xero</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@urielxero" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card"><h3>UserSI</h3></div>
+            <div class="credito-card">
+                <h3>Weiq_XD</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Weiq_XD" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Animadores</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>JNR</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@jnr1809" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Kowal</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@tkowal2" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>ReyPvZ</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@rey_pvz8578" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card"><h3>Vi</h3></div>
+            <div class="credito-card">
+                <h3>Weiq_XD</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://x.com/Weiq_XD" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Diseñadores de niveles</h2>
+        <div class="creditos-grid">
+            <div class="credito-card"><h3>autumn_02</h3></div>
+            <div class="credito-card"><h3>(Ghost/Ice/ZCorp) Alixso</h3></div>
+            <div class="credito-card"><h3>DamashTheExisting</h3></div>
+            <div class="credito-card"><h3>Jeancraft</h3></div>
+            <div class="credito-card"><h3>Kowal</h3></div>
+            <div class="credito-card"><h3>Mun</h3></div>
+            <div class="credito-card"><h3>Slimino1</h3></div>
+            <div class="credito-card"><h3>VanilloCone</h3></div>
+        </div>
+
+        <h2 class="rol-titulo">Músicos</h2>
+        <div class="creditos-grid">
+            <div class="credito-card">
+                <h3>Drenco/SmoothClicker</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@DrencoGarden" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>Ericksatto</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@ericksatto" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="credito-card">
+                <h3>M_to</h3>
+                <div class="credito-links" style="margin-top: 10px;">
+                    <a href="https://www.youtube.com/@M_to-35Dow23" target="_blank"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="rol-titulo">Observadores</h2>
+        <div class="creditos-grid">
+            <div class="credito-card"><h3>fressiameadow</h3></div>
+            <div class="credito-card"><h3>lanzacreepers</h3></div>
+            <div class="credito-card"><h3>Jazztto</h3></div>
+            <div class="credito-card"><h3>Kitty</h3></div>
+            <div class="credito-card"><h3>NotRosita</h3></div>
+            <div class="credito-card"><h3>Starlord_0567</h3></div>
+            <div class="credito-card"><h3>TheOmeg44</h3></div>
+        </div>
+    </div>
+    </div>
+
     <div class="nube nube-1"></div>
     <div class="nube nube-2"></div>
     <div class="nube nube-3"></div>
@@ -724,18 +1042,7 @@
 
     <footer>
             <p>Mod no oficial. No afiliado a EA ni PopCap.</p>
-            <p>Hecho por JeancraftMC y la familia Reloaded.</p>
-            <div class="footer-links">
-                <a href="https://www.youtube.com/@JeancraftMC_" target="_blank">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="#" target="_blank">
-                    <i class="fab fa-discord"></i> Discord
-                </a>
-                <a href="https://x.com/Pvz_Reloaded" target="_blank">
-                    <i class="fab fa-twitter"></i> Twitter        
-                </a>
-            </div>
+            <p>Dev líder: JeancraftMC | Creador de la página: Zavieru</p>
         <p>© 2026 PvZ2 Reloaded</p>
     </footer>
 
@@ -813,10 +1120,8 @@
         ajustarPanelMusicaConFooter();
         window.addEventListener('scroll', ajustarPanelMusicaConFooter, { passive: true });
         window.addEventListener('resize', ajustarPanelMusicaConFooter);
-        intentarReproducir();
-        document.addEventListener('click', intentarReproducir);       
-        document.addEventListener('keydown', intentarReproducir);     
-        document.addEventListener('touchstart', intentarReproducir); 
+        
+
     });
     function toggleMenu() {
         document.getElementById('menu-links').classList.toggle('abierto');
