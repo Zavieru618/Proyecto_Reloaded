@@ -12,6 +12,7 @@
     <style>
     html {
         scroll-behavior: smooth;
+        overflow-x: hidden;
     }
     body {
         background-color: #0a0a0f;
@@ -25,6 +26,8 @@
         margin: 0;
         font-family: 'Mifuente',sans-serif;
         overflow-x: hidden;
+        display: flex;
+        flex-direction: column;
     }
     nav{
         background: rgba(255, 255, 255, 0.04);
@@ -173,6 +176,10 @@
         align-items: flex-start;
         padding: 40px;
         min-height: calc(100vh - 88px);
+        overflow-x: hidden;
+        max-width: 100vw;
+        box-sizing: border-box;
+        flex: 1;
     }
     #Inicio {
         flex-direction: column;
@@ -618,11 +625,9 @@
     #Creditos {
         padding-bottom: 14px;
     }
-    #Novedades {
-        min-height: calc(100vh - 140px);
-    }
+    #Novedades,
     #FAQ {
-        min-height: calc(100vh - 250px);
+        min-height: calc(100vh - 140px);
     }
     .tarjeta {
         padding: 20px;
@@ -1043,7 +1048,7 @@
     function mostrar(id, elemento) {
             document.getElementById('menu-links').classList.remove('abierto');
             document.querySelectorAll('.seccion').forEach(s => s.style.display = 'none');
-            document.getElementById(id).style.display = 'block';
+            document.getElementById(id).style.display = 'flex';
 
             document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
             if (elemento) {
